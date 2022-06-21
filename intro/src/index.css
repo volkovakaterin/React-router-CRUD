@@ -1,0 +1,71 @@
+
+.input{
+  height: 40px;
+  width: 392px;
+}
+
+.post, .form{
+  width: 500px;
+  border: solid 1px gray;
+  
+}
+  
+
+.post, .create{
+ cursor: pointer;
+} 
+
+
+.post-hat{
+display: flex;
+}
+
+.photo{
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+}
+
+.name{
+  font-size: 21px;
+  font-weight: bold;
+}
+.name, .created{
+  margin-left: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.change-title{
+  display: flex;
+  margin-left: 120px;
+}
+
+.name-change-title{
+  font-size: 21px;
+}
+
+.cancel{
+  margin-left: 10px;
+}
+
+.input-change{
+  width: 491.5px;
+  height: 50px;
+}
+
+.created-title{
+  margin-left: 460px;
+}
+
+.save{
+  margin-left: 395px;
+}
+
+.input-created {
+  width: 491.5px;
+  height: 50px;
+}
