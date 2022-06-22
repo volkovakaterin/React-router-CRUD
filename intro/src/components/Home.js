@@ -1,41 +1,26 @@
 import { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import { nanoid } from 'nanoid';
 
 export default function Home(props) {
     const [statePosts, setPosts] = useState();
-    const [form, setForm] = useState('');
     function loadingPosts() {
         fetch("http://localhost:8000/posts")
           .then(res => res.json())
           .then(
             (result) => {
               setPosts(result);
-              console.log(result)
             },
             (error) => {
-              setPosts(error);
+              console.log(error);
             }
           )
       }
       let posts;
       const lookPost = (id, e)=>{
-console.log('lookPost');
 props.onLookPost(id);
       }
-      const handlePostChange =(evt) => {
-        setForm(evt.target.value)
-      }
-      const createPost = (evt) => {
-        evt.preventDefault();
-        console.log('создать пост');
-      }
       useEffect(() => {
-        console.log("first")
-        loadingPosts();
-        return function cleanup() {
-          loadingPosts()
-        };
+        return loadingPosts()
       }, []);
       if (typeof statePosts === 'object') {
         posts = statePosts.map((post) =>

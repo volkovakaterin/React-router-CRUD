@@ -2,14 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 export default function Change(props) {
-    //console.log(props.);
     const[form, setForm] = useState('');
     const [post, setPost] = useState();
-    //let post;
     let postCard;
     const saveChange =(id, e) =>{
-console.log("save");
-console.log(form);
 const obj = { id: id , content: form }
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://localhost:8000/posts');
@@ -24,7 +20,6 @@ const obj = { id: id , content: form }
       }
     }, false);
     const jsonstring = JSON.stringify(obj);
-    console.log(jsonstring)
     xhr.send(jsonstring);
     }
     useEffect(() => {
@@ -38,19 +33,15 @@ const obj = { id: id , content: form }
                   setForm(pst.content)
                 },
                 (error) => {
-                  setPost(error);
+                  console.log(error);
                 }
               )
-          }  return function cleanup() {
-        loading()
-      };
+          }  return loading()
     }, [])
     
     const handlePostChange =(evt)=>{
         setForm(evt.target.value)
     }
-     
-        console.log(post);
         if(typeof post === 'object') {
          postCard = 
     <div key={post.id} className='post'>

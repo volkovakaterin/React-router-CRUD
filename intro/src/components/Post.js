@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useJsonFetch from '../hooks/useJsonFetch';
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,6 @@ export default function Post(props) {
     let post;
     let postCard;
     const deletePost=(id, e)=>{
-        console.log("deletePost");
         fetch("http://localhost:8000/posts", {
 method: 'DELETE',
 headers: {'Content-type': 'application/x-www-form-urlencoded'},
@@ -33,16 +32,9 @@ body: JSON.stringify(id)
             </div>
           </div>
     }
-    const changePost=(id, e)=>{
-        e.preventDefault();
-        console.log("changePost");
-    }
     
     return(
         <>
-        {console.log(posts)}
-        {console.log(props.lookID)}
-        {console.log(post)}
         {postCard}
         </>
         

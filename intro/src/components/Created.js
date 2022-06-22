@@ -8,8 +8,6 @@ export default function Created(props) {
         setForm(e.target.value)
     }
     const savePost = (e) =>{
-        console.log("опубликовать");
-        console.log(form);
         const obj = { id: nanoid() , content: form }
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://localhost:8000/posts/new');
@@ -24,7 +22,6 @@ export default function Created(props) {
       }
     }, false);
     const jsonstring = JSON.stringify(obj);
-    console.log(jsonstring)
     xhr.send(jsonstring);
     }
     

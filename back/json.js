@@ -14,7 +14,6 @@ const requestListener = function (req, res) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 
     let methodReq = req.method;
-    console.log(methodReq);
     switch (req.url) {
         case "/posts":
             if (methodReq == "POST") {
@@ -23,9 +22,7 @@ const requestListener = function (req, res) {
                     data += chunk.toString();
                 });
                 req.on('end', function () {
-                    let obj = JSON.parse(posts);
-                    console.log(data);
-                    //obj.push(JSON.parse(data));  
+                    let obj = JSON.parse(posts);  
                     let newPosts = obj.map((pst) => {
                         if (pst.id === JSON.parse(data).id) {
                             pst.content = JSON.parse(data).content;
@@ -33,7 +30,6 @@ const requestListener = function (req, res) {
                         }
                         else return pst
                     })
-                    console.log(newPosts);
                     posts = JSON.stringify(newPosts);
 
                     res.writeHead(200);
@@ -77,10 +73,8 @@ const requestListener = function (req, res) {
                 });
                 req.on('end', function () {
                     let obj = JSON.parse(posts);
-                    console.log(data);
                     let newPost = {id: JSON.parse(data).id, content: JSON.parse(data).content, created: 'сейчас', name: 'Гость', photo: '/2266819_original.png'} 
                     obj.push(newPost);
-                    console.log(newPost);
                     posts = JSON.stringify(obj);
                     res.writeHead(200);
                     res.end(posts);

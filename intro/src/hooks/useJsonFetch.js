@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 
 function useJsonFetch(){
     const [posts, setPosts] = useState('');
@@ -9,16 +9,13 @@ function useJsonFetch(){
               .then(
                 (result) => {
                   setPosts(result);
-                  console.log(result)
                 },
                 (error) => {
-                  setPosts(error);
+                  console.log(error);
                 }
               )
-          }  return function cleanup() {
-        loading()
-      };
-    }, [])
+          }  return loading()
+         }, [])
     
     return posts
 }
